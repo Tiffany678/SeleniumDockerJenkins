@@ -2,7 +2,7 @@ package base;
 
 public final class AppConstants {
     public static final String platform =
-            System.getProperty("platform", "remote").trim();  // <-- trim!
+            System.getProperty("platform", "remote_git").trim();  // <-- trim!
     public static final String browserName =
             System.getProperty("browserName", "chrome").trim();
     public static final String seleniumUrl =

@@ -43,6 +43,7 @@ jobs:
           -DbrowserName=${{inputs.browsername}}
           -Dmaven.test.failure.ignore=true
 
+
         #     Report Generation
       - name: archive report artifact
         uses: actions/upload-artifact@v4

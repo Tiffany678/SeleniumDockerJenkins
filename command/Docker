@@ -1,25 +1,50 @@
 Docker:
-# Set up for Apple M2 chip with 2 threads and parallel testing:
-docker run -d --name selen-chromium -p 4444:4444   --shm-size= “2g” \
-  -e SE_NODE_MAX_SESSIONS=2 \
-  -e SE_NODE_OVERRIDE_MAX_SESSIONS=true \
-  selenium/standalone-chromium:4.35.0
+    # Set up for Apple M2 chip with 2 threads and parallel testing:
+    docker run -d --name selen-chromium -p 4444:4444   --shm-size= “2g” \
+      -e SE_NODE_MAX_SESSIONS=2 \
+      -e SE_NODE_OVERRIDE_MAX_SESSIONS=true \
+      selenium/standalone-chromium:4.35.0
 
-# stop/remove any old container using 4444
-docker rm -f selen-chromium 2>/dev/null
+    # stop/remove any old container using 4444
+    docker rm -f selen-chromium 2>/dev/null
 
-# verify it’s ready
-curl http://localhost:4444/status
-# open http://localhost:7900  (password: secret) to watch the browser
+    # verify it’s ready
+    curl http://localhost:4444/status
+    # open http://localhost:7900  (password: secret) to watch the browser
 
 
 Jenkins
-# Create a Jenkins image to docker
-docker run -p 8080:8080 -p 50000:50000 -d -v jenkins_home -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk17
+    # Create a Jenkins image to docker
+    docker run -p 8080:8080 -p 50000:50000 -d -v jenkins_home -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk17
 
-# Get Jenkins password
-docker logs [Jenkins image id]
-# auto generated the password: 25a711adc57d4be58c9e8f3dba32f868
+    # Get Jenkins password
+    docker logs [Jenkins image id]
+    # auto generated the password: 25a711adc57d4be58c9e8f3dba32f868
+
+    # Manage Jenkins
+        ## Install plugin
+        - Docker
+        - Docker pipeline
+        - html Publisher
+        - maven Integration
+        - Github Integration
+
+        ## Tools
+        - Add Maven
+
+    # New Items
+        ## Triggers: H 5 * * 5
+        ## Environment: Add timestamps to the Console Output
+        ## Build Steps:
+            Invoke top-level Maven targets
+            Maven Version: [select the previous Maven build]
+            Goals: clean test -Dplatform=remote
+            Advanced:
+                POM: pom.xml
+                Post-build Actions
+                    HTML directory to archive: ./reports/
+
+
 
 
 

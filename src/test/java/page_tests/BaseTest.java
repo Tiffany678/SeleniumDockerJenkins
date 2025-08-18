@@ -71,8 +71,8 @@ public class BaseTest
                      // driver = new RemoteWebDriver(new URL("http://localhost:4444"), co);
 
                     // grid firefox & mention your system IP address instead of localhost
-                    driver = new RemoteWebDriver(new URL("http://192.168.1.151:4444/wd/hub"), co);
-
+               //     driver = new RemoteWebDriver(new URL("http://192.168.1.151:4444/wd/hub"), co);
+                    driver = new RemoteWebDriver(new URL("http://172.17.0.2:4444/wd/hub"), co);
                     //remote webdriver url for Selenium standalone browser
                     // driver = new RemoteWebDriver(new URL("http://localhost:4441"), co);
                 } catch (MalformedURLException e) {
@@ -112,8 +112,8 @@ public class BaseTest
                    // driver = new RemoteWebDriver(new URL("http://localhost:4444"), fo);
 
                     // grid firefox & mention your system IP address instead of localhost
-                    driver = new RemoteWebDriver(new URL("http://192.168.1.151:4444/wd/hub"), co);
-
+                  //  driver = new RemoteWebDriver(new URL("http://192.168.1.151:4444/wd/hub"), fo);
+                    driver = new RemoteWebDriver(new URL("http://172.17.0.2:4444/wd/hub"), fo);
                     //remote webdriver url for Selenium standalone browser
                     //driver = new RemoteWebDriver(new URL("http://localhost:4442"), fo);
                 } catch (MalformedURLException e) {

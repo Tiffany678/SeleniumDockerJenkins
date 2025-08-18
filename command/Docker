@@ -32,6 +32,9 @@ Jenkins
         ## Tools
         - Add Maven
 
+    # find local IP address on MAC
+        System Settings => Wi-Fi => Detail
+
     # New Items
         ## Triggers: H 5 * * 5
         ## Environment: Add timestamps to the Console Output
